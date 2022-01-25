@@ -6,12 +6,19 @@ public class TicTacToe {
         
         // int a,b = Integer.parseInt(scanner.nextLine());
         char[][] board = new char[3][3];
+        board = tableGenerate();
         for(int i = 0; i < 9; i++) {
             if(i % 2 == 0) {
                 System.out.println("Turn: X");
-                askUser(board);
+                int spot[] = askUser(board);
+                board[spot[0]][spot[1]] = 'X';
+                printBoard(board);
             }else {
                 System.out.println("Turn: O");
+                int spot[] = askUser(board);
+                board[spot[0]][spot[1]] = 'O';
+                printBoard(board);
+                
             }
         }
         // printBoard(tableGenerate());
@@ -22,7 +29,7 @@ public class TicTacToe {
         int row = scanner.nextInt();
         int column = scanner.nextInt();
         while(board[row][column] == 'O' || board[row][column] == 'X'){
-            System.out.print("Spot is takink. Please chose another");
+            System.out.print("Spot is takink. Please chose another: ");
             row = scanner.nextInt();
             column = scanner.nextInt();
         }
@@ -47,17 +54,17 @@ public class TicTacToe {
      * function name: userPickIndexOnBoard()
      * @return [] with two indexes on board
      */
-    // static char[][] tableGenerate() {
-    //     char[][] board = new char[3][3];
+    static char[][] tableGenerate() {
+        char[][] board = new char[3][3];
 
-    //     for(int i = 0; i < board.length; i++) {
-    //         for(int j = 0; j < board[i].length; j++) {
+        for(int i = 0; i < board.length; i++) {
+            for(int j = 0; j < board[i].length; j++) {
                 
-    //             board[i][j] = xOrO();
-    //         }
-    //     }
-    //     return board;
-    // }
+                board[i][j] = '-';
+            }
+        }
+        return board;
+    }
     // static char xOrO() {
     //     double randomNumber = Math.random() * 10;
     //     char ticOrToe = ' ';
